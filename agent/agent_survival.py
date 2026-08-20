@@ -5,8 +5,8 @@ from web3 import Web3
 from dotenv import load_dotenv
 
 # Import our custom modular utilities
-from utils._0g_compute import ComputeModule
-from utils._0g_storage import StorageModule
+from utils._Og_compute import ComputeModule
+from utils.Og_storage import StorageModule
 
 load_dotenv()
 
