@@ -10,10 +10,6 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import our custom modular utilities
 from utils._Og_compute import ComputeModule
-
-# Workaround for 0g-storage-sdk import bug
-import sys
-sys.modules['utils'] = sys.modules[__name__]
 from utils.Og_storage import StorageModule
 
 load_dotenv()
