@@ -1,8 +1,12 @@
 import os
+import sys
 import time
 import json
 from web3 import Web3
 from dotenv import load_dotenv
+
+# Ensure the agent directory is in the path so utils modules can be found
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import our custom modular utilities
 from utils._Og_compute import ComputeModule
