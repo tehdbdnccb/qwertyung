@@ -16,10 +16,20 @@ load_dotenv()
 
 # --- CONFIGURATION & ENV SETUP ---
 PRIVATE_KEY = os.environ.get("A0G_PRIVATE_KEY")
-RPC_URL = os.environ.get("A0G_RPC_URL")
+RPC_URL = os.environ.get("A0G_RPC_URL", "https://evmrpc-testnet.0g.ai")
 STORAGE_INDEXER = os.environ.get("STORAGE_INDEXER")
 ARENA_CONTRACT_ADDRESS = os.environ.get("ARENA_CONTRACT_ADDRESS")
 AGENT_ID = int(os.environ.get("AGENT_ID", 1))
+
+# Validate critical variables
+if not PRIVATE_KEY:
+    raise ValueError("❌ Missing A0G_PRIVATE_KEY environment variable!")
+if not ARENA_CONTRACT_ADDRESS:
+    raise ValueError("❌ Missing ARENA_CONTRACT_ADDRESS environment variable!")
+if not STORAGE_INDEXER:
+    raise ValueError("❌ Missing STORAGE_INDEXER environment variable!")
+
+print(f"✅ Agent {AGENT_ID} initialized with environment variables")
 
 # Lightweight ABI just for the functions the Agent needs
 ARENA_ABI = json.loads('''[
